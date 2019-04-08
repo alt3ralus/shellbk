@@ -2,11 +2,21 @@
 
 
 ### Who designed and implemented the original Unix operating system?
-BELL lab: Ken Thomson feat. Dennis Ritchie, Douglas Mcllroy, (...).
+
+BELL lab: Ken Thompson feat. Dennis Ritchie, Douglas Mcllroy, (...).
 
 ### Who wrote the first version of the UNIX shell?
+
+Ken Thomson, who wrote the Thompson shell.
+
 ### Who invented the B programming language (the direct predecessor to the C programming language)?
+
+Ken Thompson and Dennis Ritchie at Bell lab.
+
 ### Who is Ken Thompson?
+
+
+
 ### How does a shell work?
 ### What is a pid and a ppid?
 ### How to manipulate the environment of the current process?
