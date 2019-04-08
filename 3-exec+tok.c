@@ -5,14 +5,16 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-
-
+#include <string.h>
+#include <signal.h>
+#include <errno.h>
 int main(void)
 {
-       char *line = NULL;
-       char *token;
+	char * line;
+       /* char *token; */
        size_t len = 0;
        ssize_t read;
+       const char a[2] = "\n";
        char *argv[] = {"", NULL};
        pid_t sub_shell;
        int status;
@@ -21,13 +23,13 @@ int main(void)
        {
 	       write(1, "$ ", 2);
 	       read = getline(&line, &len, stdin);
-	       token = strtok(line, "\n");
-	       if (read != 1)
+	       if (read != 1 && read != -1)
 	       {
+		       strtok(line, a);
 		       sub_shell = fork ();
 		       if (sub_shell == -1)
 		       {
-			       perror("Error:");
+			       perror("./shell");
 			       return (1);
 		       }
 		       if (sub_shell != 0)
@@ -37,10 +39,13 @@ int main(void)
 		       else
 		       {
 			       if (execve(line, argv, NULL) == -1)
-				       perror("Error");
+				       perror("/shell");
+			       /* kill(getpid(), 1); */
+			       exit(1);
 		       }
 	       }
        }
+       write(1, "\n", 1);
        free(line);
        exit(EXIT_SUCCESS);
 }
