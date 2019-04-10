@@ -11,10 +11,10 @@
 int main(void)
 {
 	char * line;
-       /* char *token; */
+	char *token;
        size_t len = 0;
        ssize_t read;
-       const char a[2] = "\n";
+       const char a[3] = "\t \n";
        char *argv[] = {"", NULL};
        pid_t sub_shell;
        int status;
@@ -25,7 +25,7 @@ int main(void)
 	       read = getline(&line, &len, stdin);
 	       if (read != 1 && read != -1)
 	       {
-		       strtok(line, a);
+		       token = strtok(line, a);
 		       sub_shell = fork ();
 		       if (sub_shell == -1)
 		       {
@@ -38,9 +38,10 @@ int main(void)
 		       }
 		       else
 		       {
-			       if (execve(line, argv, NULL) == -1)
+			       if (execve(token, argv, NULL) == -1)
 				       perror("/shell");
 			       /* kill(getpid(), 1); */
+			       free(line);
 			       exit(1);
 		       }
 	       }
