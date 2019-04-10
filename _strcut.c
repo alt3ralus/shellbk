@@ -2,9 +2,9 @@
 
 /**
  * _strcut - A function that cuts every word from a sentence.
- *
- *
- *
+ * @line: str.
+ * @separator: char.
+ * Return: Double pointer to.
  */
 
 char **_strcut(char * line, const char *separator)
@@ -19,7 +19,6 @@ char **_strcut(char * line, const char *separator)
 	token = strtok(line, separator);
 	count++;
 
-
 	printf("duplicate = %s \n ", duplicate);
 
 	while (token != NULL)
@@ -30,14 +29,11 @@ char **_strcut(char * line, const char *separator)
 
 	retorno = malloc(sizeof (char *) * count);
 
-
 	count = 0;
 
 	retorno[count] = strtok(duplicate, separator);
 
-
 	printf("Retorno 1 = %s \n", retorno[count]);
-
 
 	while ( retorno[count] != NULL)
 	{
