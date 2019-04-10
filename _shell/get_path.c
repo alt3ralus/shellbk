@@ -2,9 +2,8 @@
 #include "holberton.h"
 /**
  * get_env - finds the var enviroment given by the user
- * @var: the type of var that the userts wants, example: HOME or PATH
- * @own_envir: the direction of the pointer to alocate the variable
- * return: always 0 (for now)
+ *
+ *
  */
 int get_env(char *var, char **own_envir)
 {
