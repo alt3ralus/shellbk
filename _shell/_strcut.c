@@ -7,7 +7,7 @@
  * Return: Double pointer to.
  */
 
-char **_strcut(char * line, const char *separator)
+char **_strcut(char *line, const char *separator)
 {
 	int count = 0;
 	char *duplicate = NULL;
@@ -25,7 +25,7 @@ char **_strcut(char * line, const char *separator)
 		count++;
 	}
 
-	retorno = malloc(sizeof (char *) * count);
+	retorno = malloc(sizeof(char *) * count);
 
 	count = 0;
 
@@ -37,7 +37,7 @@ char **_strcut(char * line, const char *separator)
 		retorno[count] = strtok(NULL, separator);
 	}
 
-	return(retorno);
+	return (retorno);
 }
 /**
  * _strdup - create a copy of string recived as a parameter

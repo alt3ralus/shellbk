@@ -4,7 +4,7 @@
  * get_env - finds the var enviroment given by the user
  * @var: the type of var that the userts wants, example: HOME or PATH
  * @own_envir: the direction of the pointer to alocate the variable
- * return: always 0 (for now)
+ * Return: always 0 (for now)
  */
 
 int get_env(char *var, char **own_envir)
@@ -15,7 +15,7 @@ int get_env(char *var, char **own_envir)
 	char *compare = NULL;
 
 	len = _strlen(var);
-	compare = malloc(sizeof(char)*(len + 1));
+	compare = malloc(sizeof(char) * (len + 1));
 	while (environ[i] != NULL)
 	{
 		compare = _strncpy(compare, environ[i], len);
@@ -27,7 +27,7 @@ int get_env(char *var, char **own_envir)
 		i++;
 	}
 	free(compare);
-	*own_envir = malloc(sizeof(char)*(len + 1));
+	*own_envir = malloc(sizeof(char) * (len + 1));
 	*own_envir = _strncpy(*own_envir, environ[i], len);
 	/*dont forget free after use*/
 	return (0);
@@ -46,6 +46,7 @@ int _strcmp(char *s1, char *s2)
 	int p = 1;
 	int number = 0;
 	int i = 0;
+
 	while (p)
 	{
 		number = s1[i] - s2[i];
