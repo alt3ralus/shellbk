@@ -17,9 +17,9 @@ int execute(char **path, char **args)
 	while (path[i] != NULL)
 	{
 		i++;
-		if(access(path_arg, F_OK) == 0)
+		if (access(path_arg, F_OK) == 0)
 		{
-			if(fork() == 0)
+			if (fork() == 0)
 			{
 				if (execve(path_arg, args, NULL) != 0)
 				{
@@ -31,7 +31,7 @@ int execute(char **path, char **args)
 			else
 			{
 				wait(&status);
-				return(0);
+				return (0);
 			}
 		}
 		else
@@ -40,7 +40,7 @@ int execute(char **path, char **args)
 			{
 				len = _strlen(args[0]);
 				/* if(&path_arg != &args[0]) */
-				/* 	free(path_arg); */
+				/* free(path_arg); */
 				path_arg = str_concat(path[i], args[0], len);
 			}
 		}
@@ -49,7 +49,7 @@ int execute(char **path, char **args)
 	return (-1);
 }
 /**
- * string_nconcat - alloc a memory with malloc property to conc two strings
+ * str_concat - alloc a memory with malloc property to conc two strings
  * @s1: the first string to concatenate
  * @s2: the second string to concatenate
  * @n: the ammount to the s2 to concatenate
@@ -69,10 +69,9 @@ char *str_concat(char *s1, char *s2, unsigned int n)
 	else
 		n++;
 	szt = sz1 + n - 1 + 1;
-
-       	s = malloc(sizeof(char) * (szt));
+	s = malloc(sizeof(char) * (szt));
 	if (s == NULL)
-       		return (NULL);
+		return (NULL);
 	for (i = 0; i < (sz1 - 1); i++)
 		s[i] = s1[i];
 	s[i] = '/';
