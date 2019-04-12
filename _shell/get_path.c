@@ -2,15 +2,17 @@
 #include "holberton.h"
 /**
  * get_env - finds the var enviroment given by the user
- *
- *
+ * @var: the type of var that the userts wants, example: HOME or PATH
+ * @own_envir: the direction of the pointer to alocate the variable
+ * return: always 0 (for now)
  */
+
 int get_env(char *var, char **own_envir)
 {
 	extern char **environ;
 	unsigned int i = 0;
-	unsigned int len;
-	char *compare;
+	unsigned int len = 0;
+	char *compare = NULL;
 
 	len = _strlen(var);
 	compare = malloc(sizeof(char)*(len + 1));
@@ -24,12 +26,10 @@ int get_env(char *var, char **own_envir)
 		}
 		i++;
 	}
-	printf("compare: %s\n", compare);
 	free(compare);
 	*own_envir = malloc(sizeof(char)*(len + 1));
 	*own_envir = _strncpy(*own_envir, environ[i], len);
-	printf("environ:   %s\n", environ[i]);
-	printf("own envir: %s\n", *own_envir);
+	/*dont forget free after use*/
 	return (0);
 
 }
@@ -44,9 +44,9 @@ int get_env(char *var, char **own_envir)
 int _strcmp(char *s1, char *s2)
 {
 	int p = 1;
-	int number;
+	int number = 0;
 	int i = 0;
-		while (p)
+	while (p)
 	{
 		number = s1[i] - s2[i];
 		if ((s1[i] == '\0') && (s2[i] == '\0'))
