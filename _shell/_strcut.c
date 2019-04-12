@@ -1,5 +1,4 @@
 #include "shell.h"
-#include "holberton.h"
 /**
  * _strcut - A function that cuts every word from a sentence.
  * @line: str.

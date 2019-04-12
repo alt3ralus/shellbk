@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "shell.h"
 /**
  * execute - look in the path if a command exist, then execute
  * @path: the path separated in an array of strings

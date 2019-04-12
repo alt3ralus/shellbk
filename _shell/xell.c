@@ -1,6 +1,10 @@
-#include "holberton.h"
 #include "shell.h"
-
+/**
+ * main - This is the minishell!
+ *
+ *
+ * Return: 0 on sucess
+ */
 int main(void)
 {
 	char *line = NULL;
@@ -9,7 +13,6 @@ int main(void)
 	ssize_t read = 0;
 	char *sep_arg = "\t \n";
 	char *sep_var = "=:";
-	/* pid_t sub_shell; */
 	char *var = "PATH";
 	char *own_env = NULL;
 	char **path_spl = NULL;
@@ -24,21 +27,6 @@ int main(void)
 			get_env(var, &own_env);
 			path_spl = _strcut(own_env, sep_var);
 			execute(path_spl, arg_spl);
-			/* sub_shell = fork(); */
-			/* if (sub_shell == -1){ */
-			/* 	perror("./shell"); */
-			/* 	return (1); */
-			/* } */
-			/* if (sub_shell != 0) */
-			/* 	wait(&status); */
-			/* else */
-			/* { */
-			/* 	if (execve(token, argv, NULL) == -1) */
-			/* 	perror("/shell"); */
-			/* 	kill(getpid(), 1); */
-			/* 	free(line); */
-			/* 	exit(1); */
-		        /* } */
 		}
 	}
 	write(1, "\n", 1);
