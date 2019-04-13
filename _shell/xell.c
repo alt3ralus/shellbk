@@ -16,6 +16,8 @@ int main(void)
 	char *var = "PATH";
 	char *own_env = NULL;
 	char **path_spl = NULL;
+	char *arg_0 = NULL;
+	char *path_0 = NULL;
 
 	while (read != -1)
 	{
@@ -24,17 +26,20 @@ int main(void)
 		/* printf("getline malloc %p\n", (void*)line); */
 		if (read != 1 && read != -1)
 		{
-			arg_spl = _strcut(line, sep_arg);
-			get_env(var, &own_env);
-			path_spl = _strcut(own_env, sep_var);
-			execute(path_spl, arg_spl);
+			arg_spl = _strcut(line, sep_arg, &arg_0);
+			if (arg_spl[0] != NULL)
+			{
+				get_env(var, &own_env);
+				path_spl = _strcut(own_env, sep_var, &path_0);
+				execute(path_spl, arg_spl);
 
-			free(own_env);
-			/* printf("arg_[0]:%s\n", arg_spl[0]) ;*/
-			/* free(arg_spl[0]); */
-			free(arg_spl);
-			free(path_spl[0]);
-			free(path_spl);
+				free(own_env);
+				/* printf("arg_[0]:%s\n", arg_spl[0]) ;*/
+				free(arg_0);
+				free(arg_spl);
+				free(path_0);
+				free(path_spl);
+			}
 		}
 	}
 	free(line);

@@ -6,7 +6,7 @@
  * Return: Double pointer to.
  */
 
-char **_strcut(char *line, const char *separator)
+char **_strcut(char *line, const char *separator, char **arg_0)
 {
 	int count = 0;
 	char *duplicate = NULL;
@@ -14,8 +14,9 @@ char **_strcut(char *line, const char *separator)
 	char **retorno = NULL;
 
 	duplicate = _strdup(line);
-
+	*arg_0 = duplicate;
 	token = strtok(line, separator);
+	/* printf("token0:%s.\n", token); */
 	count++;
 
 	while (token != NULL)

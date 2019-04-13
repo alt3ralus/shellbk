@@ -23,11 +23,12 @@ int execute(char **path, char **args)
 			{
 				if (execve(path_arg, args, NULL) != 0)
 				{
-					/* free(path_arg); */
-					perror("./execve");
+					/*  */
+					perror("./shell");
 					/* free(path[0]); */
 					/* free(path); */
 					exit(-1);
+					/* return (-1); */
 				}
 			}
 			else
@@ -48,7 +49,8 @@ int execute(char **path, char **args)
 			}
 		}
 	}
-	perror("./exe");
+	free(path_arg);
+	perror("./shell");
 	return (-1);
 }
 /**

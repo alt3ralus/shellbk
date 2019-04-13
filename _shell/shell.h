@@ -14,7 +14,7 @@ extern char **environ;
 char *_strdup(char *str);
 char *str_concat(char *s1, char *s2, unsigned int n);
 int execute(char **path, char **args);
-char **_strcut(char *line, const char *separator);
+char **_strcut(char *line, const char *separator, char **arg_0);
 int _strcmp(char *s1, char *s2);
 int get_env(char *var, char **own_envir);
 int _strlen(char *s);
