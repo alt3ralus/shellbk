@@ -13,6 +13,7 @@ int execute(char **path, char **args)
 	int len;
 	char *path_arg;
 
+
 	path_arg = args[0];
 	while (path[i] != NULL)
 	{
@@ -45,6 +46,8 @@ int execute(char **path, char **args)
 			}
 		}
 	}
+
+
 	perror("./exe");
 	return (-1);
 }
