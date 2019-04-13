@@ -23,14 +23,17 @@ int execute(char **path, char **args)
 			{
 				if (execve(path_arg, args, NULL) != 0)
 				{
-
+					/* free(path_arg); */
 					perror("./execve");
+					/* free(path[0]); */
+					/* free(path); */
 					exit(-1);
 				}
 			}
 			else
 			{
 				wait(&status);
+				free(path_arg);
 				return (0);
 			}
 		}
@@ -39,8 +42,8 @@ int execute(char **path, char **args)
 			if (path[i] != NULL)
 			{
 				len = _strlen(args[0]);
-				/* if(&path_arg != &args[0]) */
-				/* free(path_arg); */
+				if(i > 1)
+					free(path_arg);
 				path_arg = str_concat(path[i], args[0], len);
 			}
 		}

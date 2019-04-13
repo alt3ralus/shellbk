@@ -25,6 +25,7 @@ char **_strcut(char *line, const char *separator)
 	}
 
 	retorno = malloc(sizeof(char *) * count);
+	/* printf("retorno malloc %p\n", (void*)retorno); */
 
 	count = 0;
 
@@ -56,6 +57,7 @@ char *_strdup(char *str)
 		;
 	size++;
 	p = malloc(sizeof(char) * size);
+	/* printf("_strdup malloc %p\n", (void*)p); */
 	if (p == NULL)
 		return (NULL);
 

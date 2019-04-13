@@ -21,15 +21,23 @@ int main(void)
 	{
 		write(1, "$ ", 2);
 		read = getline(&line, &len, stdin);
+		/* printf("getline malloc %p\n", (void*)line); */
 		if (read != 1 && read != -1)
 		{
 			arg_spl = _strcut(line, sep_arg);
 			get_env(var, &own_env);
 			path_spl = _strcut(own_env, sep_var);
 			execute(path_spl, arg_spl);
+
+			free(own_env);
+			/* printf("arg_[0]:%s\n", arg_spl[0]) ;*/
+			/* free(arg_spl[0]); */
+			free(arg_spl);
+			free(path_spl[0]);
+			free(path_spl);
 		}
 	}
-	write(1, "\n", 1);
 	free(line);
+	write(1, "\n", 1);
 	exit(EXIT_SUCCESS);
 }
