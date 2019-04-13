@@ -30,7 +30,8 @@ int main(void)
 			if (arg_spl[0] != NULL)
 			{
 				get_env(var, &own_env);
-				path_spl = _strcut(own_env, sep_var, &path_0);
+				exc_built(arg_spl);
+        path_spl = _strcut(own_env, sep_var, &path_0);
 				execute(path_spl, arg_spl);
 
 				free(own_env);
