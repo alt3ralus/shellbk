@@ -11,6 +11,7 @@
 #include <signal.h>
 #include <errno.h>
 
+extern char **environ;
 
 typedef struct built {
 	char *name;
