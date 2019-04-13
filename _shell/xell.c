@@ -22,6 +22,7 @@ int main(void)
 		{
 			arg_spl = _strcut(line, sep_arg);
 			get_env(var, &own_env);
+			exc_built(arg_spl);
 			path_spl = _strcut(own_env, sep_var);
 			execute(path_spl, arg_spl);
 			/* sub_shell = fork(); */
