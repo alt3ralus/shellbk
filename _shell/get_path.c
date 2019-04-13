@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "holberton.h"
+#include "shell.h"
 /**
  * get_env - finds the var enviroment given by the user
  * @var: the type of var that the userts wants, example: HOME or PATH
@@ -9,7 +9,6 @@
 
 int get_env(char *var, char **own_envir)
 {
-	extern char **environ;
 	unsigned int i = 0;
 	unsigned int len = 0;
 	char *compare = NULL;
@@ -28,6 +27,7 @@ int get_env(char *var, char **own_envir)
 	}
 	free(compare);
 	*own_envir = malloc(sizeof(char) * (len + 1));
+	/* printf("get_env malloc %p\n", (void*)*own_envir); */
 	*own_envir = _strncpy(*own_envir, environ[i], len);
 	/*dont forget free after use*/
 	return (0);

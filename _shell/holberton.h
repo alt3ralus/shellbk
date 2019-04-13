@@ -10,15 +10,11 @@
 #include <string.h>
 #include <signal.h>
 #include <errno.h>
-
 extern char **environ;
-
 typedef struct built {
 	char *name;
 	int (*fun) (void);
 } built_s;
-
-
 int xexit(void);
 int xenv(void);
 int exc_built(char **args);

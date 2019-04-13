@@ -1,6 +1,10 @@
-#include "holberton.h"
 #include "shell.h"
-
+/**
+ * main - This is the minishell!
+ *
+ *
+ * Return: 0 on sucess
+ */
 int main(void)
 {
 	char *line = NULL;
@@ -9,40 +13,37 @@ int main(void)
 	ssize_t read = 0;
 	char *sep_arg = "\t \n";
 	char *sep_var = "=:";
-	/* pid_t sub_shell; */
 	char *var = "PATH";
 	char *own_env = NULL;
 	char **path_spl = NULL;
+	char *arg_0 = NULL;
+	char *path_0 = NULL;
 
 	while (read != -1)
 	{
 		write(1, "$ ", 2);
 		read = getline(&line, &len, stdin);
+		/* printf("getline malloc %p\n", (void*)line); */
 		if (read != 1 && read != -1)
 		{
-			arg_spl = _strcut(line, sep_arg);
-			get_env(var, &own_env);
-			exc_built(arg_spl);
-			path_spl = _strcut(own_env, sep_var);
-			execute(path_spl, arg_spl);
-			/* sub_shell = fork(); */
-			/* if (sub_shell == -1){ */
-			/* 	perror("./shell"); */
-			/* 	return (1); */
-			/* } */
-			/* if (sub_shell != 0) */
-			/* 	wait(&status); */
-			/* else */
-			/* { */
-			/* 	if (execve(token, argv, NULL) == -1) */
-			/* 	perror("/shell"); */
-			/* 	kill(getpid(), 1); */
-			/* 	free(line); */
-			/* 	exit(1); */
-		        /* } */
+			arg_spl = _strcut(line, sep_arg, &arg_0);
+			if (arg_spl[0] != NULL)
+			{
+				get_env(var, &own_env);
+				exc_built(arg_spl);
+        path_spl = _strcut(own_env, sep_var, &path_0);
+				execute(path_spl, arg_spl);
+
+				free(own_env);
+				/* printf("arg_[0]:%s\n", arg_spl[0]) ;*/
+				free(arg_0);
+				free(arg_spl);
+				free(path_0);
+				free(path_spl);
+			}
 		}
 	}
-	write(1, "\n", 1);
 	free(line);
+	write(1, "\n", 1);
 	exit(EXIT_SUCCESS);
 }

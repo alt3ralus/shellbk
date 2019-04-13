@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "shell.h"
 /**
  * execute - look in the path if a command exist, then execute
  * @path: the path separated in an array of strings
@@ -24,14 +24,18 @@ int execute(char **path, char **args)
 			{
 				if (execve(path_arg, args, NULL) != 0)
 				{
-
-					perror("./execve");
+					/*  */
+					perror("./shell");
+					/* free(path[0]); */
+					/* free(path); */
 					exit(-1);
+					/* return (-1); */
 				}
 			}
 			else
 			{
 				wait(&status);
+				free(path_arg);
 				return (0);
 			}
 		}
@@ -40,15 +44,14 @@ int execute(char **path, char **args)
 			if (path[i] != NULL)
 			{
 				len = _strlen(args[0]);
-				/* if(&path_arg != &args[0]) */
-				/* free(path_arg); */
+				if(i > 1)
+					free(path_arg);
 				path_arg = str_concat(path[i], args[0], len);
 			}
 		}
 	}
-
-
-	perror("./exe");
+	free(path_arg);
+	perror("./shell");
 	return (-1);
 }
 /**
