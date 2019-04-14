@@ -1,5 +1,4 @@
 #include "shell.h"
-#include "holberton.h"
 /**
  * _strcut - A function that cuts every word from a sentence.
  * @line: str.
@@ -7,7 +6,7 @@
  * Return: Double pointer to.
  */
 
-char **_strcut(char *line, const char *separator)
+char **_strcut(char *line, const char *separator, char **arg_0)
 {
 	int count = 0;
 	char *duplicate = NULL;
@@ -15,8 +14,9 @@ char **_strcut(char *line, const char *separator)
 	char **retorno = NULL;
 
 	duplicate = _strdup(line);
-
+	*arg_0 = duplicate;
 	token = strtok(line, separator);
+	/* printf("token0:%s.\n", token); */
 	count++;
 
 	while (token != NULL)
@@ -26,6 +26,7 @@ char **_strcut(char *line, const char *separator)
 	}
 
 	retorno = malloc(sizeof(char *) * count);
+	/* printf("retorno malloc %p\n", (void*)retorno); */
 
 	count = 0;
 
@@ -57,6 +58,7 @@ char *_strdup(char *str)
 		;
 	size++;
 	p = malloc(sizeof(char) * size);
+	/* printf("_strdup malloc %p\n", (void*)p); */
 	if (p == NULL)
 		return (NULL);
 
