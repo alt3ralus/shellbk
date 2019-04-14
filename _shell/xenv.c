@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include "holberton.h"
+#include "shell.h"
 /**
  * main - prints the environment
 

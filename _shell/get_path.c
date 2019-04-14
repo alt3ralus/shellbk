@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "shell.h"
 /**
  * get_env - finds the var enviroment given by the user

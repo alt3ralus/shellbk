@@ -11,6 +11,13 @@
 #include <signal.h>
 #include <errno.h>
 extern char **environ;
+typedef struct built {
+	char *name;
+	int (*fun) (void);
+} built_s;
+int xexit(void);
+int xenv(void);
+int exc_built(char **args);
 char *_strdup(char *str);
 char *str_concat(char *s1, char *s2, unsigned int n);
 int execute(char **path, char **args);
