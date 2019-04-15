@@ -26,11 +26,10 @@ int exc_built(char **args)
 		if(_strcmp(args[0], builts[count].name) == 0)
 		{
 			(builts[count].fun)();
+			return(0);
 		}
 	}
-
-
-	return(0);
+	return(1);
 }
 
 

@@ -30,16 +30,18 @@ int main(void)
 			if (arg_spl[0] != NULL)
 			{
 				get_env(var, &own_env);
-				exc_built(arg_spl);
-        path_spl = _strcut(own_env, sep_var, &path_0);
-				execute(path_spl, arg_spl);
+				if (exc_built(arg_spl); == 1)
+				{
+					path_spl = _strcut(own_env, sep_var, &path_0);
+					execute(path_spl, arg_spl);
 
-				free(own_env);
-				/* printf("arg_[0]:%s\n", arg_spl[0]) ;*/
-				free(arg_0);
-				free(arg_spl);
-				free(path_0);
-				free(path_spl);
+					free(own_env);
+					/* printf("arg_[0]:%s\n", arg_spl[0]) ;*/
+					free(arg_0);
+					free(arg_spl);
+					free(path_0);
+					free(path_spl);
+				}
 			}
 		}
 	}
