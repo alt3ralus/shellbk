@@ -18,7 +18,6 @@ char **_strcut(char *line, const char *separator, char **arg_0)
 	token = strtok(line, separator);
 	/* printf("token0:%s.\n", token); */
 	count++;
-
 	while (token != NULL)
 	{
 		token = strtok(NULL, separator);
