@@ -13,7 +13,6 @@ int execute(char **path, char **args)
 	int len;
 	char *path_arg;
 
-
 	path_arg = args[0];
 	while (path[i] != NULL)
 	{
@@ -40,7 +39,7 @@ int execute(char **path, char **args)
 			if (path[i] != NULL)
 			{
 				len = _strlen(args[0]);
-				if(i > 1)
+				if (i > 1)
 					free(path_arg);
 				path_arg = str_concat(path[i], args[0], len);
 			}
