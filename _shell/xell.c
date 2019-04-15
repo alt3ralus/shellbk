@@ -1,27 +1,16 @@
 #include "shell.h"
 /**
  * main - This is the minishell!
- *
- *
  * Return: 0 on sucess
  */
-void printarray(char **array, int n);
 int main(void)
 {
-	char *line = NULL;
-	char **arg_spl = NULL;
+	char *arg_0 = NULL,  *path_0 = NULL,  *arg_sc_0, *line = NULL;
+	char **arg_spl = NULL, **path_spl = NULL, **arg_scolon;
 	size_t len = 0;
 	ssize_t read = 0;
-	char *sep_arg = "\t \n";
-	char *sep_var = "=:";
-	char *var = "PATH";
-	char *own_env = NULL;
-	char **path_spl = NULL;
-	char *arg_0 = NULL;
-	char *path_0 = NULL;
+	char *sep_arg = "\t \n", *sep_var = "=:", *var = "PATH", *own_env = NULL;
 	int i;
-	char **arg_scolon;
-	char *arg_sc_0;
 
 	while (read != -1)
 	{
@@ -42,17 +31,13 @@ int main(void)
 					{
 						path_spl = _strcut(own_env, sep_var, &path_0);
 						execute(path_spl, arg_spl);
-						free(own_env);
-						free(arg_0);
-						free(arg_spl);
-						free(path_0);
-						free(path_spl);
+						free(own_env), free(arg_0), free(arg_spl);
+						free(path_0), free(path_spl);
 					}
 				}
 				i++;
 			}
-			free(arg_sc_0);
-			free(arg_scolon);
+			free(arg_sc_0), free(arg_scolon);
 		}
 	}
 	free(line);
