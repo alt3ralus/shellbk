@@ -19,7 +19,6 @@ char **_strcut(char *line, const char *separator, char **arg_0)
 	*arg_0 = duplicate;
 	token = strtok(line, separator);
 	count++;
-
 	while (token != NULL)
 	{
 		token = strtok(NULL, separator);
