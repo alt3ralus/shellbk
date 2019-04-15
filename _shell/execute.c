@@ -24,12 +24,8 @@ int execute(char **path, char **args)
 			{
 				if (execve(path_arg, args, NULL) != 0)
 				{
-					/*  */
 					perror("./shell");
-					/* free(path[0]); */
-					/* free(path); */
 					exit(-1);
-					/* return (-1); */
 				}
 			}
 			else

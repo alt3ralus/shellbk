@@ -14,6 +14,7 @@ int get_env(char *var, char **own_envir)
 
 	len = _strlen(var);
 	compare = malloc(sizeof(char) * (len + 1));
+	compare[len] = '\0';
 	while (environ[i] != NULL)
 	{
 		compare = _strncpy(compare, environ[i], len);
