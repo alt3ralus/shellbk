@@ -3,6 +3,8 @@
  * _strcut - A function that cuts every word from a sentence.
  * @line: str.
  * @separator: char.
+ * @arg_0: the pointer that save the origin malloc allocation of the
+ * array of strings
  * Return: Double pointer to.
  */
 
@@ -16,7 +18,6 @@ char **_strcut(char *line, const char *separator, char **arg_0)
 	duplicate = _strdup(line);
 	*arg_0 = duplicate;
 	token = strtok(line, separator);
-	/* printf("token0:%s.\n", token); */
 	count++;
 	while (token != NULL)
 	{
@@ -25,7 +26,6 @@ char **_strcut(char *line, const char *separator, char **arg_0)
 	}
 
 	retorno = malloc(sizeof(char *) * count);
-	/* printf("retorno malloc %p\n", (void*)retorno); */
 
 	count = 0;
 

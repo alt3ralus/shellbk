@@ -1,11 +1,9 @@
 #include "shell.h"
 
 /**
- * exc_built - description...
- *
- * @args:
- *
- * Return: 0 when fount a built in. 1 otherwise
+ * exc_built - check if an argumment is a builtin function
+ * @args: the argumment to evaluate
+ * Return: 0 if the argumment is a built-in function, 1 otwerwise
  */
 int exc_built(char **args)
 {
@@ -31,15 +29,12 @@ int exc_built(char **args)
 	return (1);
 }
 /**
- * xexit - description...
+ * xexit - exit function
  *
- *
- * Return: 0 always
+ * Return: - always 0
  */
 int xexit(void)
 {
 	exit(EXIT_SUCCESS);
 	return (0);
-
-
 }
